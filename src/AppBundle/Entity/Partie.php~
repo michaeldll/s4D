@@ -1,0 +1,334 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Partie
+ *
+ * @ORM\Table(name="partie")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\PartieRepository")
+ */
+class Partie
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="encours", type="boolean")
+     */
+    private $encours;
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="listeDesBornes", type="json_array")
+     */
+    private $listeDesBornes;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="timer", type="time")
+     */
+    private $timer;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="debutPartie", type="datetime")
+     */
+    private $debutPartie;
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="pioche", type="json_array")
+     */
+    private $pioche;
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="mainj1", type="json_array")
+     */
+    private $mainj1;
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="mainj2", type="json_array")
+     */
+    private $mainj2;
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="terrainj1", type="json_array")
+     */
+    private $terrainj1;
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="terrainj2", type="json_array")
+     */
+    private $terrainj2;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Joueur", inversedBy="partiesj1")
+     */
+    private $joueur1;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Joueur", inversedBy="partiesj2")
+     */
+    private $joueur2;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Joueur")
+     */
+    private $tourJoueur;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Joueur")
+     */
+    private $gagnant;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set encours
+     *
+     * @param boolean $encours
+     *
+     * @return Partie
+     */
+    public function setEncours($encours)
+    {
+        $this->encours = $encours;
+
+        return $this;
+    }
+
+    /**
+     * Get encours
+     *
+     * @return bool
+     */
+    public function getEncours()
+    {
+        return $this->encours;
+    }
+
+    /**
+     * Set listeDesBornes
+     *
+     * @param array $listeDesBornes
+     *
+     * @return Partie
+     */
+    public function setListeDesBornes($listeDesBornes)
+    {
+        $this->listeDesBornes = $listeDesBornes;
+
+        return $this;
+    }
+
+    /**
+     * Get listeDesBornes
+     *
+     * @return array
+     */
+    public function getListeDesBornes()
+    {
+        return $this->listeDesBornes;
+    }
+
+    /**
+     * Set timer
+     *
+     * @param \DateTime $timer
+     *
+     * @return Partie
+     */
+    public function setTimer($timer)
+    {
+        $this->timer = $timer;
+
+        return $this;
+    }
+
+    /**
+     * Get timer
+     *
+     * @return \DateTime
+     */
+    public function getTimer()
+    {
+        return $this->timer;
+    }
+
+    /**
+     * Set debutPartie
+     *
+     * @param \DateTime $debutPartie
+     *
+     * @return Partie
+     */
+    public function setDebutPartie($debutPartie)
+    {
+        $this->debutPartie = $debutPartie;
+
+        return $this;
+    }
+
+    /**
+     * Get debutPartie
+     *
+     * @return \DateTime
+     */
+    public function getDebutPartie()
+    {
+        return $this->debutPartie;
+    }
+
+    /**
+     * Set pioche
+     *
+     * @param array $pioche
+     *
+     * @return Partie
+     */
+    public function setPioche($pioche)
+    {
+        $this->pioche = $pioche;
+
+        return $this;
+    }
+
+    /**
+     * Get pioche
+     *
+     * @return array
+     */
+    public function getPioche()
+    {
+        return $this->pioche;
+    }
+
+    /**
+     * Set mainj1
+     *
+     * @param array $mainj1
+     *
+     * @return Partie
+     */
+    public function setMainj1($mainj1)
+    {
+        $this->mainj1 = $mainj1;
+
+        return $this;
+    }
+
+    /**
+     * Get mainj1
+     *
+     * @return array
+     */
+    public function getMainj1()
+    {
+        return $this->mainj1;
+    }
+
+    /**
+     * Set mainj2
+     *
+     * @param array $mainj2
+     *
+     * @return Partie
+     */
+    public function setMainj2($mainj2)
+    {
+        $this->mainj2 = $mainj2;
+
+        return $this;
+    }
+
+    /**
+     * Get mainj2
+     *
+     * @return array
+     */
+    public function getMainj2()
+    {
+        return $this->mainj2;
+    }
+
+    /**
+     * Set terrainj1
+     *
+     * @param array $terrainj1
+     *
+     * @return Partie
+     */
+    public function setTerrainj1($terrainj1)
+    {
+        $this->terrainj1 = $terrainj1;
+
+        return $this;
+    }
+
+    /**
+     * Get terrainj1
+     *
+     * @return array
+     */
+    public function getTerrainj1()
+    {
+        return $this->terrainj1;
+    }
+
+    /**
+     * Set terrainj2
+     *
+     * @param array $terrainj2
+     *
+     * @return Partie
+     */
+    public function setTerrainj2($terrainj2)
+    {
+        $this->terrainj2 = $terrainj2;
+
+        return $this;
+    }
+
+    /**
+     * Get terrainj2
+     *
+     * @return array
+     */
+    public function getTerrainj2()
+    {
+        return $this->terrainj2;
+    }
+}
+
