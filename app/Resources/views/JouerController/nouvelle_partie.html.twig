@@ -5,7 +5,8 @@
 {% block body %}
 <h1>Welcome to the JouerController:nouvellePartie page</h1>
 
-    {{ form_start(form) }}
-
-    {{ form_end(form) }}
+    {{ form_start(form) }}      {# Ouverture du formulaire, balise form #}
+        {{ form_widget(form) }} {# Ecriture des champs #}
+        <input type="submit" value="Créer partie" /> {# ajout du champ submit #}
+    {{ form_end(form) }}        {# fermeture du formulaire #}
 {% endblock %}
